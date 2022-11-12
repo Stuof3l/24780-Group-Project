@@ -19,7 +19,7 @@ int main() {
         glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT);
         
         if (key == FSKEY_ESC) {
-           
+           // test
             break;
         } else if ((gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) && key == FSKEY_S) {
             DrawWelcome();
