@@ -1,7 +1,4 @@
-//
-//  main.cpp
-//  24780 - Team Project
-//
+
 
 #define GL_SILENCE_DEPRECATION
 #include <stdio.h>
@@ -11,9 +8,9 @@
 #include <iostream>
 #include <vector>
 #include "fssimplewindow.h"
-//#include "ysglfontdata.h"
-//#include "yssimplesound.h"
-//#include "yspng.h"
+#include "ysglfontdata.h"
+#include "yssimplesound.h"
+#include "yspng.h"
 using namespace std;
 
 enum game_states {
@@ -31,6 +28,8 @@ void DrawBackground();
 void DrawEnd();
 void DrawPlayerDied();
 
+#include "mian.hpp"
+
 int main() {
     game_states gameStates = WELCOME_PAGE;
     
@@ -41,8 +40,9 @@ int main() {
         key=FsInkey();
         
         glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT);
-        // testtest
+        
         if (key == FSKEY_ESC) {
+           
             break;
         } else if ((gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) && key == FSKEY_S) {
             DrawWelcome();
@@ -64,3 +64,20 @@ int main() {
 
     return 0;
 }
+
+void DrawWelcome() {
+    
+}
+
+void DrawPlayerDied() {
+    
+}
+
+void DrawEnd() {
+    
+}
+
+void DrawBackground() {
+    
+}
+
