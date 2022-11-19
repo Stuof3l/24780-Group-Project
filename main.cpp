@@ -33,30 +33,66 @@ void DrawEnd();
 void DrawPlayerDied();
 void DrawWords(string str, int x, int y, font_size fontSize);
 void DrawBox(double x, double y, double xLength, double yLength);
+const char* SelectMusic(game_states gameStates);
 
 int main() {
     game_states gameStates = WELCOME_PAGE;
     FsChangeToProgramDir();
     FsOpenWindow(300,300,WINDOWWIDTH,WINDOWHEIGHT,1);
+    
+    
+    const char* mscName = SelectMusic(gameStates);
+    YsSoundPlayer player;
+    YsSoundPlayer::SoundData wav;
+    wav.LoadWav(mscName);
+    player.Start();
+    player.PlayOneShot(wav);
+    
     auto key=FsInkey();
+//    while(YSTRUE==player.IsPlaying(wav)) {
     while(1) {
+        player.KeepPlaying();
         FsPollDevice();
         key=FsInkey();
+//        if(key != FSKEY_NULL) {
+//            const char* mscKey = "keypress.wav";
+//            wav.LoadWav(mscKey);
+//            player.Start();
+//            player.PlayOneShot(wav);
+//        }
         if (key == FSKEY_ESC) {
            // end game
             break;
+        } else if(gameStates == PLAY) {
+            if(key == FSKEY_UP) {
+                
+            } else if (key == FSKEY_DOWN) {
+                
+            } else if (key == FSKEY_LEFT) {
+                
+            } else if (key == FSKEY_RIGHT) {
+                
+            }
+            
+            // if the player died, revise later on
+            gameStates = PLAYER_DIED;
+            mscName = SelectMusic(gameStates);
+            wav.LoadWav(mscName);
+            player.Start();
+            player.PlayOneShot(wav);
+            
         } else if ((gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) && key == FSKEY_S) {
             gameStates = PLAY;
             // play the game
-            gameStates = PLAYER_DIED;
         } else if ((gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) && key == FSKEY_E) {
             gameStates = GAME_END;
+            player.End(); // does not work
         } else if (gameStates ==  GAME_END) {
             DrawEnd();
-        }
-        else if (gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) {
+        } else if (gameStates == WELCOME_PAGE || gameStates == PLAYER_DIED) {
             DrawWelcome();
         }
+        
         if(gameStates == PLAYER_DIED) {
             DrawPlayerDied();
         }
@@ -64,8 +100,23 @@ int main() {
         FsSwapBuffers();
         FsSleep(25);
     }
-
+    player.End();
     return 0;
+}
+
+const char* SelectMusic(game_states gameStates) {
+    const char* mscName;
+    if(gameStates == WELCOME_PAGE) {
+        mscName = "pianomoment.wav";
+    } else if (gameStates == PLAYER_DIED || gameStates == PLAY) {
+        mscName = "littleidea.wav";
+    } else if (gameStates == GAME_END) {
+        mscName = "";
+    } else {
+        mscName = "ERROR";
+        cout << "Error in game_states\n";
+    }
+    return mscName;
 }
 
 void DrawWords(string str, int x, int y, font_size fontSize) {
