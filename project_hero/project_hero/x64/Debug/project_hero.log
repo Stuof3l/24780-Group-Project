@@ -1,0 +1,25 @@
+﻿  Drawer.cpp
+  fssimplewindow.cpp
+D:\study\24780\team_project\project_hero\project_hero\fssimplewindow.cpp(946,72): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+  hero.cpp
+D:\study\24780\team_project\project_hero\project_hero\level1.h(6,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(7,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(8,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(9,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(10,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  level1.cpp
+D:\study\24780\team_project\project_hero\project_hero\level1.h(6,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(7,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(8,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(9,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(10,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Obstacle.cpp
+  project_hero.cpp
+D:\study\24780\team_project\project_hero\project_hero\level1.h(6,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(7,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(8,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(9,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(10,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  yspng.cpp
+  Generating Code...
+  project_hero.vcxproj -> D:\study\24780\team_project\project_hero\x64\Debug\project_hero.exe
