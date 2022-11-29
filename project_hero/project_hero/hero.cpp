@@ -1,10 +1,10 @@
 #include "hero.h"
 #include <cmath>
-
+#include <chrono>
 hero::hero() {
 	health = 100;
 	heroX = 0;
-	heroY = 0;
+	heroY = 450;
 	horizontal_speed = 0;
 	vertical_speed = 0;
 	on_ground = true;
@@ -13,6 +13,11 @@ hero::hero() {
 	acceleration = 10;
 	maxSpeed = 50;
 	flip = false;
+	gravity = 9.8;
+	jumpCounter = 0;
+	h = png[0].hei / 3;
+	w = png[0].wid / 3;
+
 }
 double hero::GetX() const {
 	return heroX;
@@ -53,22 +58,67 @@ void hero::Set_vertical_speed(const double v) {
 }
 
 
-void hero::update(Level1& l1) {
-	FsPollDevice();
-	auto key = FsInkey();
+void hero::Jump() {
+	on_ground = false;
+	vertical_speed = 150;
+}
+
+void hero::update(Level1& l1, int key) {
+	//FsPollDevice();
+	//auto key = FsInkey();
+	int friction = 1;
 	if (FSKEY_D == key)
 	{
 		horizontal_speed = std::min(horizontal_speed + acceleration, maxSpeed);
-		std::cout << "1"<<std::endl;
+		//std::cout << "1"<<std::endl;
 		
 	}
 	else if (FSKEY_A == key)
 	{
 		horizontal_speed = std::max(horizontal_speed - acceleration, -maxSpeed);
-		std::cout << "2" << std::endl;
+		//std::cout << "2" << std::endl;
+	}
+	else if (FSKEY_SPACE == key) {
+		if (jumpCounter < 2) {
+			Jump();
+			jumpCounter += 1;
+		}
+		else {
+			if (on_ground) {
+				jumpCounter = 0;
+			}
+		}
+	}
+	else if (horizontal_speed >= friction && on_ground) {
+		horizontal_speed -= friction;
+	}
+	else if (horizontal_speed <= -friction && on_ground) {
+		horizontal_speed += friction;
+	}
+	
+	if (on_ground) {
+		vertical_speed = 0;
+		heroY = 450;
+	}
+	else {
+		vertical_speed -= gravity;
+		heroY -= vertical_speed * 0.1;
+		// modify here when obstacle class finished  on_gound = hero.checkObstacle()
+		if (heroY > 450) {
+			on_ground = true;
+		}
 	}
 	heroX += horizontal_speed * 0.1;
-	flip = horizontal_speed < 0;	
+	if (horizontal_speed < 0 && flip == false) {
+		flip = true;
+	}
+	else if ( horizontal_speed> 0 && flip == true) {
+		flip = false;
+	}
 }
 
 
+std::array<int, 4> hero:: Get_hitbox() {
+	std::array<int, 4> hitbox = { heroX, heroY, h,w };
+	return hitbox;
+}

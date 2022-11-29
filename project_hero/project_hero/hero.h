@@ -4,6 +4,7 @@
 #include <math.h>
 #include "yspng.h"
 #include "level1.h"
+#include <array>
 class hero
 {
 
@@ -14,6 +15,10 @@ class hero
 	double acceleration;
 	double maxSpeed;
 	bool flip;
+	double gravity;
+	int jumpCounter;
+	int h;
+	int w;
 	YsRawPngDecoder png[3];
 public:
 
@@ -21,13 +26,14 @@ public:
 
 	double GetX() const;
 	double Get_vertical_speed() const;
+	std::array<int, 4> Get_hitbox();
 
 	void Draw();
 	void Set_Position(const double x, const double y);
 	void Reset();
 	void Set_vertical_speed(const double v);
 
-	void update(Level1& l1);
-
+	void update(Level1& l1,int key);
+	void Jump();
 };
 
