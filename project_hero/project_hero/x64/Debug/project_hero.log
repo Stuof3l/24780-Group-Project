@@ -1,0 +1,7 @@
+﻿  hero.cpp
+D:\study\24780\team_project\project_hero\project_hero\level1.h(6,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(7,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(8,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(9,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\study\24780\team_project\project_hero\project_hero\level1.h(10,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  project_hero.vcxproj -> D:\study\24780\team_project\project_hero\x64\Debug\project_hero.exe
